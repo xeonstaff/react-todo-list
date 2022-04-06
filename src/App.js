@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react'
 import TodoList from './TodoList';
-import {v4 as uuidv4} from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 import './App.css'
 
 function App() {
@@ -9,9 +9,9 @@ function App() {
 
   function addTodo(event) {
     const taskName = addRef.current.value
-    if (taskName){
+    if (taskName) {
       setTodos(oldTodos => {
-        return [...oldTodos, { id: uuidv4, name: taskName, isComplete: false}]
+        return [...oldTodos, { id: uuidv4, name: taskName, isComplete: false }]
       })
       addRef.current.value = null
     } else {
@@ -30,17 +30,18 @@ function App() {
     const newTodos = todos.filter(todo => !todo.isComplete)
     setTodos(newTodos)
   }
-  
+
   return (
     <div className="flex-column margin-top">
       <div className='title'>To-Do</div>
+      <i><h4>Just like Evernote, but way worse!</h4></i>
       <div>Remaining items: {todos.length}</div>
       <input ref={addRef} type="text" />
       <div className="flex-row">
-      <button className="padding-5 margin-5" onClick={addTodo}>Add Item</button>
-      <button className="padding-5 margin-5" onClick={clearTodos} >Clear Checked</button>
+        <button className="padding-5 margin-5" onClick={addTodo}>Add Item</button>
+        <button className="padding-5 margin-5" onClick={clearTodos} >Clear Checked</button>
       </div>
-      <TodoList todos={todos} checkBox={checkBox}/>
+      <TodoList todos={todos} checkBox={checkBox} />
     </div>
   );
 }
